@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"> -->
+    <link rel="stylesheet" href="/milligram-1.3.0/dist/milligram.min.css">
+  </head>
+
+  <body>
+    <h1>Tello Drone Controller</h1>
+    <button class="button button-outline" id="connect">CONNECT</button>
+    <button class="button button-outline" id="disconnect">DISCONNECT</button>
+    <div class="container">
+    <h2>command</h2>
+      <form name="mycontroller">
+        <button name="takeoff">TAKEOFF</button>
+        <button name="land">LAND</button>
+        <br><br>
+
+        <button name="up">UP</button>
+        <button name="down">DOWN</button>
+        <br><br>
+
+        <button name="forward">FORWARD</button>
+        <button name="back">BACK</button>
+        <button name="right">RIGHT</button>
+        <button name="left">LEFT</button>  
+      </form>
+
+      <label>distance x [cm]</label>
+      <input id="x" type="text" value="50">
+
+      <form name="myform">
+        <label>other command</label>
+        <input name="text" type="text" placeholder="cw x(1-3600), ccw x(1-3600), flip x(l,r,f,b)">
+        <button name="btn">SEND</button>
+      </form>
+   
+      <hr>
+      <label>Command Log</label>
+      <ul id="log"></ul>
+ 
+    </div>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script> -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="connect_to_microbit.js"></script>
+  <script src="drone.js"></script>
+  </body>
+
+</html>

@@ -4,9 +4,10 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var x = 50;
 app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/index.html');
+  response.sendFile(__dirname + '/assets/index.html');
 });
- 
+app.use(express.static('assets'));
+
 server.listen(3000);
 
 // "use strict"
@@ -31,13 +32,7 @@ const wait = ms => new Promise(res => setTimeout(res, ms))
 
 // Telloに操作したいコマンドを記述
 const main = async (cmd) => {
-    // await send("command", 100)
-    // await send("takeoff", 4000)
-    // await send("land")
-
     await send(cmd, 500)
-    // console.log("cmd: " + cmd +" , wait: " + x)
-    // process.exit()
 }
 // main()
 
