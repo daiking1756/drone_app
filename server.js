@@ -40,7 +40,7 @@ send("command", 500) // entry sdk mode
 
 
 io.on('connection', function(socket){
- 
+
     //ここに処理を記述する
     socket.on('chat', function(msg){
         console.log(msg);
@@ -57,15 +57,15 @@ io.on('connection', function(socket){
     socket.on('cmd', function(msg){
         var cmd = msg
         if(msg!="takeoff" && msg!="land"){
-            cmd += ' ' + x 
+            cmd += ' ' + x
         }
-        io.emit('chat', "cmd: " + cmd)
+        io.emit('chat', cmd)
         send(cmd, 500) // 0.5秒待つ
     });
 
     socket.on('cmdRaw', function(msg){
         var cmd = msg
-        io.emit('chat', "cmd: " + cmd)
+        io.emit('chat', cmd)
         send(cmd, 500) // 0.5秒待つ
     });
 

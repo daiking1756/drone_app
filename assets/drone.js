@@ -28,7 +28,7 @@ controller.land.addEventListener('click', function(e) {
 controller.up.addEventListener('click', function(e) {
   e.preventDefault();
   socket.emit('cmd', "up");
-})   
+})
 
 controller.down.addEventListener('click', function(e) {
   e.preventDefault();
@@ -61,6 +61,7 @@ socket.on('chat', function(msg){
   //ここに処理を記述する
   var li = document.createElement('li');
 
-  li.textContent = msg;
-  log.appendChild(li);
+  li.textContent = String(log.childElementCount + 1) + " :" + msg;
+  // log.appendChild(li);
+  log.insertBefore(li, log.firstChild);
 });
