@@ -52,13 +52,21 @@ function onCharacteristicValueChanged(e) {
     var str=String.fromCharCode.apply(null,str_arr);
     // alert("msg:"+str);
     // socket.emit('chat', str);
-    if(str=="up"){
+    if(str=="takeoff") {
+        socket.emit('cmd', "takeoff");
+    } else if(str=="land") {
+        socket.emit('cmd', "land");
+    } else if(str=="forward") {
+        socket.emit('cmd', "forward");
+    } else if(str=="back") {
+        socket.emit('cmd', "back");
+    } else if(str=="up") {
         socket.emit('cmd', "up");
-    }else if(str=="down"){
+    }  else if(str=="down") {
         socket.emit('cmd', "down");
-    }else if(str=="right"){
+    } else if(str=="right") {
         socket.emit('cmd', "right");
-    }else if(str=="left"){
+    } else if(str=="left") {
         socket.emit('cmd', "left");
     }
 }

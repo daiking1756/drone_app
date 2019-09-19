@@ -61,7 +61,7 @@ socket.on('chat', function(msg){
   //ここに処理を記述する
   var li = document.createElement('li');
 
-  li.textContent = String(log.childElementCount + 1) + " :" + msg;
+  li.textContent = `[${log.childElementCount + 1}] ${msg}`;
   // log.appendChild(li);
   log.insertBefore(li, log.firstChild);
 });
