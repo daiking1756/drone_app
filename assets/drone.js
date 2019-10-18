@@ -58,8 +58,16 @@ controller.left.addEventListener('click', function(e) {
 
 
 socket.on('chat', function(msg){
-  //ここに処理を記述する
-  var li = document.createElement('li');
+  // play SE
+  const audioElem = new Audio();
+  if(msg == 'takeoff' || msg == 'land') {
+    audioElem.src = "/sounds/takeoff_land.mp3";
+  } else {
+    audioElem.src = "/sounds/detect_gesture.mp3";
+  }
+  audioElem.play();
+
+  const li = document.createElement('li');
 
   li.textContent = `[${log.childElementCount + 1}] ${msg}`;
   // log.appendChild(li);
