@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
-var x = 50;
+var x = 30;
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/assets/index.html');
 });
