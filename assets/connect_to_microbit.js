@@ -56,18 +56,42 @@ function onCharacteristicValueChanged(e) {
         socket.emit('cmd', "takeoff");
     } else if(str=="land") {
         socket.emit('cmd', "land");
-    } else if(str=="forward") {
-        socket.emit('cmd', "forward");
-    } else if(str=="back") {
-        socket.emit('cmd', "back");
     } else if(str=="up") {
-        socket.emit('cmd', "up");
-    }  else if(str=="down") {
-        socket.emit('cmd', "down");
+        if (mode_checkbox.checked) {
+            socket.emit('cmd', "cw");
+        } else {
+            socket.emit('cmd', "up");
+        }
+    } else if(str=="down") {
+        if (mode_checkbox.checked) {
+            socket.emit('cmd', "ccw");
+        } else {
+            socket.emit('cmd', "down");
+        }
+    } else if(str=="forward") {
+        if (mode_checkbox.checked) {
+            socket.emit('cmd', "flip f");
+        } else {
+            socket.emit('cmd', "forward");
+        }
+    } else if(str=="back") {
+        if (mode_checkbox.checked) {
+            socket.emit('cmd', "flip b");
+        } else {
+            socket.emit('cmd', "back");
+        }
     } else if(str=="right") {
-        socket.emit('cmd', "right");
+        if (mode_checkbox.checked) {
+            socket.emit('cmd', "flip r");
+        } else {
+            socket.emit('cmd', "right");
+        }
     } else if(str=="left") {
-        socket.emit('cmd', "left");
+        if (mode_checkbox.checked) {
+            socket.emit('cmd', "flip l");
+        } else {
+            socket.emit('cmd', "left");
+        }
     }
 }
 
