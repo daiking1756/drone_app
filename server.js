@@ -1,8 +1,9 @@
-var express = require('express');
-var app = express();
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
-var x = 30;
+const express = require('express');
+const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io').listen(server);
+let x = 30;
+let y = 90;
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/assets/index.html');
 });
@@ -54,17 +55,31 @@ io.on('connection', function(socket){
         io.emit('chat', res)
     });
 
+    socket.on('y', function(msg){
+        let res = "angle y: "+ y + " -> " + msg
+        console.log(res)
+        y = Number(msg)
+        io.emit('chat', res)
+    });
+
     socket.on('cmd', function(msg){
-        var cmd = msg
-        if(msg!="takeoff" && msg!="land"){
+        let cmd = msg
+        if( msg=="up" ||
+            msg=="down" ||
+            msg=="forward" ||
+            msg=="back" ||
+            msg=="right" ||
+            msg=="left"){
             cmd += ' ' + x
+        } else if (msg=="cw" || msg=="ccw"){
+            cmd += ' ' + y
         }
         io.emit('chat', cmd)
         send(cmd, 500) // 0.5秒待つ
     });
 
     socket.on('cmdRaw', function(msg){
-        var cmd = msg
+        const cmd = msg
         io.emit('chat', cmd)
         send(cmd, 500) // 0.5秒待つ
     });
