@@ -1,3 +1,10 @@
+# Usage
+1. Write program to your micro:bit (`magicwand_8ope.hex`)
+2. Your PC connect to your Tello Wi-Fi
+3. `node server.js`
+4. Access `localhost:3000` on your browser
+5. Click connect button to connect to your micro:bit on WebBluetooth
+
 # Tello Drone Controller
 This is a controller for toy drone Tello
 
