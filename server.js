@@ -25,7 +25,7 @@ const tello = {
 // Telloにコマンド送信する関数
 const send = async (buf, ms = 0) => {
   console.log(buf);
-  const command = new Buffer(buf);
+  const command = Buffer.from(buf);
   sock.send(command, 0, command.length, tello.port, tello.ip);
   await wait(ms);
 };
